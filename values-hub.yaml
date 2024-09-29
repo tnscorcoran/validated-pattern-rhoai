@@ -2,17 +2,47 @@ clusterGroup:
   name: hub
   isHubCluster: true
   namespaces:
-    - open-cluster-management
-    - vault
-    - golang-external-secrets
-    - config-demo
-    - hello-world
+  - vault
+  - golang-external-secrets
+  - redhat-ods-operator
+  - openshift-pipelines
+  - openshift-nfd
+  - nvidia-gpu-operator
+  - openshift-serverless
+  - knative-serving
+  - config-demo
+  - hello-world
+
   subscriptions:
-    # acm:
-    #   name: advanced-cluster-management
-    #   namespace: open-cluster-management
-    #   channel: release-2.11
-      #csv: advanced-cluster-management.v2.6.1
+
+    rhoai:
+      name: rhods-operator
+      # Fast is required for 2.9.0
+      channel: stable-2.13
+      namespace: openshift-operators
+
+    openshift-pipelines:
+      name: openshift-pipelines-operator-rh
+      namespace: openshift-operators
+
+    serverless:
+      channel: stable
+      name: serverless-operator
+
+    servicemesh:
+      channel: stable
+      namespace: openshift-operators
+      name: servicemeshoperator
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      channel: stable
+    gpu:
+      name: gpu-operator-certified
+      namespace: nvidia-gpu-operator
+      channel: stable
+      source: certified-operators
+
   projects:
     - hub
     - config-demo
