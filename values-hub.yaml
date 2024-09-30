@@ -44,6 +44,11 @@ clusterGroup:
       channel: stable
       source: certified-operators
 
+    authorino:
+      name: authorino-operator
+      namespace: openshift-operators
+      channel: tech-preview-v1
+
   projects:
     - hub
     - config-demo
